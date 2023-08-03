@@ -1,49 +1,48 @@
+/* Add in global graphic identity i.e. font family, text styles */
+
+
+/* Style the kitchen background */
 body {
   background-color: #FFCCCC;
   font-family: 'Spirax', cursive;
 }
 
-.container {
+/* Style the fridge itself */
+#fridge {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.app {
+/* Style the grid you can add notes to on the fridge */
+.cell {
+
+}
+
+/* Style the note appearance/layout */
+.note {
   display: flex;
   flex-direction: column;
 }
 
-.puppy-list {
+/* Style each kitchen magnet  */
+.magnet {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 50px;
 }
 
-.puppy {
+
+/* Style the selecting and clicking of the magnets displayed at side of screen  */
+.magnet-library {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 50px;
 }
 
-.img-circle {
-  border-radius: 50%;
-  object-fit: cover;
-  width: 230px;
-  height: 230px;
-}
-
-.title {
-  text-align: center;
-}
-
-.nav {
-  text-align: center;
-  color: black;
-}
-
+/* Style the form you add note's text content into  */
 .form {
   display: flex;
   flex-direction: column;
