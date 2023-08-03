@@ -1,53 +1,49 @@
 {
-  "puppies": [
+  "FridgeData": [
     {
       "id": 1,
-      "name": "Fido",
-      "owner": "Fred",
-      "image": "/images/puppy1.jpg",
-      "breed": "Labrador"
+      "name": "Caleb",
+      "note": "Lorem ipsum dolor sita amet, consectetur adipiscing elit, sed do eiusmod tempor "
     },
     {
       "id": 2,
-      "name": "Coco",
-      "owner": "Chloe",
-      "image": "/images/puppy2.jpg",
-      "breed": "Labrador"
+      "name": "Laura",
+      "note": "Lorem ipsum dolor sit bamet, consectetur adipiscing elit, sed do eiusmod tempor"
     },
     {
       "id": 3,
-      "name": "Magnum",
-      "owner": "Michael",
-      "image": "/images/puppy3.jpg",
-      "breed": "Rottweiler"
+      "name": "Hannah",
+      "note": "Lorem ipsum dolor sit camet, consectetur adipiscing elit, sed do eiusmod tempor"
     },
     {
       "id": 4,
-      "name": "Sadie",
-      "owner": "Sam",
-      "image": "/images/puppy4.jpg",
-      "breed": "Labrador"
+      "name": "Caleb",
+      "note": "Lorem ipsum dolor sitd amet, consectetur adipiscing elit, sed do eiusmod tempor"
     },
     {
       "id": 5,
-      "name": "Murphy",
-      "owner": "Matthew",
-      "image": "/images/puppy5.jpg",
-      "breed": "Pug"
+      "name": "Laura",
+      "note": "Lorem ipsum dolor sit eamet, consectetur adipiscing elit, sed do eiusmod tempor"
     },
     {
       "id": 6,
-      "name": "Bella",
-      "owner": "Brianna",
-      "image": "/images/puppy6.jpg",
-      "breed": "Labrador"
+      "name": "Hannah",
+      "note": "Lorem ipsum dolor sit famet, consectetur adipiscing elit, sed do eiusmod tempor"
     },
     {
       "id": 7,
-      "name": "Rocky",
-      "owner": "Ricky",
-      "image": "/images/puppy7.jpg",
-      "breed": "Labrador"
+      "name": "Caleb",
+      "note": "Lorem ipsum dolor sgit amet, consectetur adipiscing elit, sed do eiusmod tempor"
+    },
+     {
+      "id": 8,
+      "name": "Laura",
+      "note": "Lorem ipsum dolor sith amet, consectetur adipiscing elit, sed do eiusmod tempor"
+    },
+     {
+      "id": 9,
+      "name": "Hannah",
+      "note": "Lorem ipsum dolor siit amet, consectetur adipiscing elit, sed do eiusmod tempor"
     }
   ]
 }
