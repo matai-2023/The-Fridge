@@ -16,12 +16,21 @@ body {
 
 /* Style the grid each cell belongs in on fridge */
 #grid {
-
+  margin-right: center;
+  margin-left: center;
+  margin: 0 auto;
+  border-spacing: 0;
+  border-collapse: collapse;
 }
 
 /* Style the grid you can add notes to on the fridge */
 .cell {
-
+  width: 8vw;
+    height: 8vw;
+    text-align: center;
+    font-size: 300%;
+    border: black solid 3px;
+    color: black;
 }
 
 /* Style the note appearance/layout */
