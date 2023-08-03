@@ -14,13 +14,18 @@ body {
   justify-content: center;
 }
 
+/* Style the grid each cell belongs in on fridge */
+#grid {
+
+}
+
 /* Style the grid you can add notes to on the fridge */
 .cell {
 
 }
 
 /* Style the note appearance/layout */
-.note {
+.note-layout {
   display: flex;
   flex-direction: column;
 }

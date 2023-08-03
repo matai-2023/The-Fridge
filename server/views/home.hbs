@@ -1,7 +1,24 @@
-<div class="container">
-  {{#each puppies}}
-  <div class="puppy-list">
-    <a href="/puppies/{{id}}"><img class="img-circle" src="{{image}}" alt="{{name}}"></a>
+
+{{!-- Homepage is a grid of cells, each with the
+ability to stick a note in it --}}
+
+
+     <table id="grid">
+            <tr>
+              {{#each note}}
+                <td class="cell">{{note}}</td>
+              {{/each}}
+            </tr>
+            <tr>
+              {{#each note}}
+                <td class="cell">{{note}}</td>
+              {{/each}}
+            </tr>
+            <tr>
+              {{#each note}}
+                <td class="cell">{{note}}</td>
+              {{/each}}
+            </tr>
+        </table>
   </div>
-  {{/each}}
-</div>
+
