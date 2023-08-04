@@ -12,7 +12,7 @@ const filePath = Path.join(__dirname, 'data', 'data.json')
 
 server.listen(port, function () {
   // eslint-disable-next-line no-console
-  //console.log('Server is listening on port', port)
+  console.log('Server is listening on port', port)
 })
 
 //compiling fridge data into table rows
@@ -26,9 +26,11 @@ async function organiseDataRows() {
 
   let notesArray = viewData.FridgeData
 
+
   const row1 = []
   const row2 = []
   const row3 = []
+
 
   notesArray.map((object) => {
     if (object['id'] === 1 || object['id'] === 2 || object['id'] === 3) {
@@ -46,3 +48,4 @@ async function organiseDataRows() {
 }
 
 organiseDataRows()
+

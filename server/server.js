@@ -4,10 +4,12 @@ import * as fsPromises from 'node:fs/promises'
 import express from 'express'
 import hbs from 'express-handlebars'
 
+
 const server = express()
 
 const __filename = URL.fileURLToPath(import.meta.url)
 const __dirname = Path.dirname(__filename)
+const filePath = Path.join(__dirname, 'data', 'data.json')
 
 // Server configuration
 const publicFolder = Path.resolve('public')
@@ -22,9 +24,10 @@ server.set('views', Path.resolve('server/views'))
 // Your routes/router(s) should go here
 //////////////////////////////////////////////////////////////////// route ///////////////////////////////////////////////////////////////////////////
 
-//get the root page
+// Route handler for the root page ("/")
 server.get('/', async (req, res) => {
   const filePath = Path.join(__dirname, 'data', 'data.json')
+
   const data = await fsPromises.readFile(filePath, 'utf-8')
   const notes = JSON.parse(data)
   let viewData = notes
@@ -45,6 +48,7 @@ server.get('/', async (req, res) => {
     }
   })
   viewData = { row1, row2, row3 }
+
   res.render('home', viewData)
 })
 
@@ -57,6 +61,7 @@ server.get('/fridge/:id/edit', async (req, res) => {
   const viewData = parsedData.fridgeData.find((note) => note.id == id)
   res.render('edit', viewData)
 })
+
 
 //For the POST /fridge/:id/edit route: EDITING THE NOTE
 server.post('/fridge/:id/edit', async (req, res) => {
@@ -91,14 +96,17 @@ server.post('/fridge/:id/edit', async (req, res) => {
 //   })
 //  })
 
+
 //deleting = matching the place in the JSON file and removing/deleting it.
 //if id = id then delete
 
 server.post('/fridge/:id/edit', async(req, res) => {
+
   const id = req.params.id
   const filePath = Path.join(__dirname, 'data', 'data.json')
   const data = await fsPromises.readFile(filePath, 'utf-8')
   const notes = JSON.parse(data)
+
   const note = notes.fridgeData.find((obj) => obj.id == id) 
   const body = req.body
   for (const key in body) {
@@ -138,6 +146,7 @@ server.get('/fridge/:id/edit'),
       return res.redirect('/fridge/:id/edit')
     }
   }
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
