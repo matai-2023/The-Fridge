@@ -81,23 +81,39 @@ server.post('/fridge/:id/edit', async(req, res) => {
 //deleting = matching the place in the JSON file and removing/deleting it. 
 //if id = id then delete
 
-server.post('/fridge/:id/edit', async(req, res) => { 
+server.post('/fridge/:id/edit', async(req, res) => {
   const id = req.params.id
   const filePath = Path.join(__dirname,  'data', 'data.json')
   const data = await fsPromises.readFile(filePath, 'utf-8')
-  const notes = JSON.stringify(data)
+  const notes = JSON.parse(data)
   const note = notes.fridgeData.find((obj) => obj.id == id) 
+  const body = req.body
+  for (const key in body) {
+    note[key] = ""
+  }}
+)
   
-  for (let [i, note] of note.entries()) {
-    if (id === id) {
-      notes.splice(i, [note])
-    }
-  }
   
- })
-
-
-// onclick function to redirect to the main page from the editing page
+  ////////////////// delete a specific object in the array //////////////
+  // const removeById = (notes, id) => {
+    //    const requiredIndex = notes.findIndex(el => {
+      //       return el.id === String(id)
+      //    });
+      //    if(requiredIndex === -1){
+        //       return false;
+        //    }
+        //    return !!notes.splice(requiredIndex, 1)
+        // }
+        
+        // onclick function to redirect to the main page from the editing page
+        
+        //detele old function
+        //   for (let [i, note] of note.entries()) {
+        //     if (id === id) {
+        //       notes.splice(i, [note])
+        //     }}
+        //  })
+        
 server.get('/fridge/:id/edit'), async (req, res) => {
   const id = res.params.id
   const filePath = Path.join(__dirname,  'data', 'data.json')

@@ -4,6 +4,7 @@ import * as URL from 'node:url'
 import * as fsPromises from 'node:fs/promises'
 import express from 'express'
 import hbs from 'express-handlebars'
+import { log } from 'node:console'
 
 const port = 3000
 
@@ -18,32 +19,33 @@ server.listen(port, function () {
 
 //compiling fridge data into table rows
 
-export async function organiseDataRows(filePath) {
-  const fridgeData = await fsPromises.readFile(filePath, 'utf-8')
-  console.log(fridgeData)
-  const notes = JSON.parse(fridgeData)
-  const viewData = notes
-  await console.log(viewData)
+// export async function organiseDataRows(filePath) {
+//   const fridgeData = await fsPromises.readFile(filePath, 'utf-8')
+//   console.log(fridgeData)
+//   const notes = JSON.parse(fridgeData)
+//   const viewData = notes
+//   await console.log(viewData)
 
-  const eachNote = viewData.data.map((note) => {
-    console.log(note)
-  })
-  console.log(eachNote)
+//   // const eachNote = viewData.data.map((note) => {
+//   //   console.log(note)
+  
+//   // })
+//   // console.log(eachNote)
 
-  const rows = []
+//   const rows = []
 
-  const numRows = Math.ceil(viewData.length / 3)
-  // console.log(numRows)
+//   const numRows = Math.ceil(viewData.length / 3)
+//   // console.log(numRows)
 
-  for (let i = 0; i < numRows; i++) {
-    const startOfRow = i * 3
-    const endOfRow = startOfRow + 3
+//   for (let i = 0; i < numRows; i++) {
+//     const startOfRow = i * 3
+//     const endOfRow = startOfRow + 3
 
-    const rowData = viewData.slice(startOfRow, endOfRow)
+//     const rowData = viewData.slice(startOfRow, endOfRow)
 
-    rows.push(rowData)
-  }
-  // console.log(rows)
-}
+//     rows.push(rowData)
+//   }
+//   // console.log(rows)
+// }
 
-console.log(organiseDataRows(filePath))
+// console.log(organiseDataRows(filePath))
