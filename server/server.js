@@ -4,7 +4,6 @@ import * as fsPromises from 'node:fs/promises'
 import express from 'express'
 import hbs from 'express-handlebars'
 
-
 const server = express()
 
 const __filename = URL.fileURLToPath(import.meta.url)
@@ -25,36 +24,52 @@ server.set('views', Path.resolve('server/views'))
 
 //get the root page
 server.get('/', async (req, res) => {
-    const filePath = Path.join(__dirname, 'data', 'data.json')
-    const data = await fsPromises.readFile(filePath, 'utf-8')
-    const notes = JSON.parse(data)
-    const viewData = notes
-    res.render('home', viewData)
-    
-    })
-    
- //For the GET /fridge/:id/edit route: EDITING THE NOTE
- server.get('/fridge/:id/edit', async(req, res) => {
-    const id = req.params.id
-    const filePath = Path.join(__dirname,  'data', 'data.json')
-    const data = await fsPromises.readFile(filePath, 'utf-8')
-    const parsedData = JSON.parse(data)
-    const viewData = parsedData.fridgeData.find((note) => note.id == id)
-    res.render('edit', viewData)
-  })
-
-//For the POST /fridge/:id/edit route: EDITING THE NOTE
-server.post('/fridge/:id/edit', async(req, res) => {
-  const id = req.params.id
-  const filePath = Path.join(__dirname,  'data', 'data.json')
+  const filePath = Path.join(__dirname, 'data', 'data.json')
   const data = await fsPromises.readFile(filePath, 'utf-8')
   const notes = JSON.parse(data)
-  const note = notes.fridgeData.find((obj) => obj.id == id) 
+  let viewData = notes
+
+  let notesArray = viewData.FridgeData
+
+  const row1 = []
+  const row2 = []
+  const row3 = []
+
+  notesArray.map((object) => {
+    if (object['id'] === 1 || object['id'] === 2 || object['id'] === 3) {
+      row1.push(object)
+    } else if (object['id'] === 4 || object['id'] === 5 || object['id'] === 6) {
+      row2.push(object)
+    } else if (object['id'] === 7 || object['id'] === 8 || object['id'] === 9) {
+      row3.push(object)
+    }
+  })
+  viewData = { row1, row2, row3 }
+  res.render('home', viewData)
+})
+
+//For the GET /fridge/:id/edit route: EDITING THE NOTE
+server.get('/fridge/:id/edit', async (req, res) => {
+  const id = req.params.id
+  const filePath = Path.join(__dirname, 'data', 'data.json')
+  const data = await fsPromises.readFile(filePath, 'utf-8')
+  const parsedData = JSON.parse(data)
+  const viewData = parsedData.fridgeData.find((note) => note.id == id)
+  res.render('edit', viewData)
+})
+
+//For the POST /fridge/:id/edit route: EDITING THE NOTE
+server.post('/fridge/:id/edit', async (req, res) => {
+  const id = req.params.id
+  const filePath = Path.join(__dirname, 'data', 'data.json')
+  const data = await fsPromises.readFile(filePath, 'utf-8')
+  const notes = JSON.parse(data)
+  const note = notes.fridgeData.find((obj) => obj.id == id)
   const body = req.body
   for (const key in body) {
     note[key] = body[key]
-  }}
-)
+  }
+})
 
 // //adding = add new object at the end of the JSON file
 
@@ -63,9 +78,9 @@ server.post('/fridge/:id/edit', async(req, res) => {
 //   const filePath = Path.join(__dirname,  'data', 'data.json')
 //   const data = await fsPromises.readFile(filePath, 'utf-8')
 //   const notes = JSON.stringify(data)
-//   const note = notes.fridgeData.find((obj) => obj.id == id) 
+//   const note = notes.fridgeData.find((obj) => obj.id == id)
 //   const body = req.body
-   
+
 //   Object.keys(data).map(
 //     function(id){
 //       data[id]["name"]=[body]
@@ -73,53 +88,44 @@ server.post('/fridge/:id/edit', async(req, res) => {
 //   })
 //  })
 
-
-
-
 //
 
-//deleting = matching the place in the JSON file and removing/deleting it. 
+//deleting = matching the place in the JSON file and removing/deleting it.
 //if id = id then delete
 
-server.post('/fridge/:id/edit', async(req, res) => { 
+server.post('/fridge/:id/edit', async (req, res) => {
   const id = req.params.id
-  const filePath = Path.join(__dirname,  'data', 'data.json')
+  const filePath = Path.join(__dirname, 'data', 'data.json')
   const data = await fsPromises.readFile(filePath, 'utf-8')
   const notes = JSON.stringify(data)
-  const note = notes.fridgeData.find((obj) => obj.id == id) 
-  
+  const note = notes.fridgeData.find((obj) => obj.id == id)
+
   for (let [i, note] of note.entries()) {
     if (id === id) {
       notes.splice(i, [note])
     }
   }
-  
- })
-
+})
 
 // onclick function to redirect to the main page from the editing page
-server.get('/fridge/:id/edit'), async (req, res) => {
-  const id = res.params.id
-  const filePath = Path.join(__dirname,  'data', 'data.json')
-  const data = await fsPromises.readFile(filePath, 'utf-8')
+server.get('/fridge/:id/edit'),
+  async (req, res) => {
+    const id = res.params.id
+    const filePath = Path.join(__dirname, 'data', 'data.json')
+    const data = await fsPromises.readFile(filePath, 'utf-8')
 
-  let object = document.getElementByType()
-object.onclick = function click() {
-  return res.redirect('/fridge/:id/edit')
-}}
-
-
-
+    let object = document.getElementByType()
+    object.onclick = function click() {
+      return res.redirect('/fridge/:id/edit')
+    }
+  }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// const stringified = JSON.stringify(notes, null, 2)
 
-  // const stringified = JSON.stringify(notes, null, 2)
+// await fsPromises.writeFile(filePath, stringified, { encoding: 'utf-8' })
 
-  // await fsPromises.writeFile(filePath, stringified, { encoding: 'utf-8' })
-
-  // res.redirect(`/fridgeData/${id}`)
-
-
+// res.redirect(`/fridgeData/${id}`)
 
 export default server
