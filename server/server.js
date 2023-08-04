@@ -56,7 +56,10 @@ server.post('/fridge/:id/edit', async(req, res) => {
   }}
 )
 
-// //adding = add new object at the end of the JSON file
+
+
+
+// //adding = add new object(id) with two key/values(name/note) at the end of the JSON file
 
 // server.post('/fridge/:id/edit', async(req, res) => {
 //   const id = req.params.id
@@ -72,11 +75,6 @@ server.post('/fridge/:id/edit', async(req, res) => {
 //       data[id]["note"]=[body]
 //   })
 //  })
-
-
-
-
-//
 
 //deleting = matching the place in the JSON file and removing/deleting it. 
 //if id = id then delete
@@ -94,7 +92,7 @@ server.post('/fridge/:id/edit', async(req, res) => {
 )
   
   
-  ////////////////// delete a specific object in the array //////////////
+  ////////////////// delete a specific object in the array ///////////////////
   // const removeById = (notes, id) => {
     //    const requiredIndex = notes.findIndex(el => {
       //       return el.id === String(id)
@@ -105,15 +103,15 @@ server.post('/fridge/:id/edit', async(req, res) => {
         //    return !!notes.splice(requiredIndex, 1)
         // }
         
-        // onclick function to redirect to the main page from the editing page
-        
-        //detele old function
+//old detele function 
         //   for (let [i, note] of note.entries()) {
         //     if (id === id) {
         //       notes.splice(i, [note])
         //     }}
         //  })
         
+        
+// onclick function to redirect to the main page from the editing page
 server.get('/fridge/:id/edit'), async (req, res) => {
   const id = res.params.id
   const filePath = Path.join(__dirname,  'data', 'data.json')
