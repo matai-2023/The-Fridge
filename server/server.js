@@ -3,7 +3,7 @@ import * as URL from 'node:url'
 import * as fsPromises from 'node:fs/promises'
 import express from 'express'
 import hbs from 'express-handlebars'
-import { organiseDataRows } from './index.js'
+
 
 const server = express()
 
@@ -27,13 +27,27 @@ server.set('views', Path.resolve('server/views'))
 // Route handler for the root page ("/")
 server.get('/', async (req, res) => {
   const filePath = Path.join(__dirname, 'data', 'data.json')
-  const notesData = await fsPromises.readFile(filePath, 'utf-8')
-  const notes = JSON.parse(notesData)
-  const rows = await organiseDataRows(notes.fridgeData)
 
-  const viewData = {
-    FridgeData: rows,
-  }
+  const data = await fsPromises.readFile(filePath, 'utf-8')
+  const notes = JSON.parse(data)
+  let viewData = notes
+
+  let notesArray = viewData.FridgeData
+
+  const row1 = []
+  const row2 = []
+  const row3 = []
+
+  notesArray.map((object) => {
+    if (object['id'] === 1 || object['id'] === 2 || object['id'] === 3) {
+      row1.push(object)
+    } else if (object['id'] === 4 || object['id'] === 5 || object['id'] === 6) {
+      row2.push(object)
+    } else if (object['id'] === 7 || object['id'] === 8 || object['id'] === 9) {
+      row3.push(object)
+    }
+  })
+  viewData = { row1, row2, row3 }
 
   res.render('home', viewData)
 })
@@ -48,10 +62,6 @@ server.get('/fridge/:id/edit', async (req, res) => {
   res.render('edit', viewData)
 })
 
-server.get('/', async (req, res) => {
-  const rows = await organiseDataRows(filePath)
-  res.render('home', { rows })
-})
 
 //For the POST /fridge/:id/edit route: EDITING THE NOTE
 server.post('/fridge/:id/edit', async (req, res) => {
@@ -66,7 +76,10 @@ server.post('/fridge/:id/edit', async (req, res) => {
   }
 })
 
-// //adding = add new object at the end of the JSON file
+
+
+
+// //adding = add new object(id) with two key/values(name/note) at the end of the JSON file
 
 // server.post('/fridge/:id/edit', async(req, res) => {
 //   const id = req.params.id
@@ -83,35 +96,57 @@ server.post('/fridge/:id/edit', async (req, res) => {
 //   })
 //  })
 
-//
 
 //deleting = matching the place in the JSON file and removing/deleting it.
 //if id = id then delete
 
-server.post('/fridge/:id/edit', async (req, res) => {
+server.post('/fridge/:id/edit', async(req, res) => {
+
   const id = req.params.id
   const filePath = Path.join(__dirname, 'data', 'data.json')
   const data = await fsPromises.readFile(filePath, 'utf-8')
   const notes = JSON.parse(data)
-  const noteIndex = notes.fridgeData.findIndex((obj) => obj.id == id)
 
-  if (noteIndex !== -1) {
-    notes.fridgeData.splice(noteIndex, 1)
-
-    await fsPromises.writeFile(filePath, JSON.stringify(notes, null, 2))
-
-    res.redirect('/')
-  } else {
-    // Handle note not found case
-    res.status(404).send('Note not found')
-  }
-})
-
+  const note = notes.fridgeData.find((obj) => obj.id == id) 
+  const body = req.body
+  for (const key in body) {
+    note[key] = ""
+  }}
+)
+  
+  
+  ////////////////// delete a specific object in the array ///////////////////
+  // const removeById = (notes, id) => {
+    //    const requiredIndex = notes.findIndex(el => {
+      //       return el.id === String(id)
+      //    });
+      //    if(requiredIndex === -1){
+        //       return false;
+        //    }
+        //    return !!notes.splice(requiredIndex, 1)
+        // }
+        
+//old detele function 
+        //   for (let [i, note] of note.entries()) {
+        //     if (id === id) {
+        //       notes.splice(i, [note])
+        //     }}
+        //  })
+        
+        
 // onclick function to redirect to the main page from the editing page
-server.get('/fridge/:id/edit', async (req, res) => {
-  const id = req.params.id
-  res.redirect(`/fridge/${id}/edit`)
-})
+server.get('/fridge/:id/edit'),
+  async (req, res) => {
+    const id = res.params.id
+    const filePath = Path.join(__dirname, 'data', 'data.json')
+    const data = await fsPromises.readFile(filePath, 'utf-8')
+
+    let object = document.getElementByType()
+    object.onclick = function click() {
+      return res.redirect('/fridge/:id/edit')
+    }
+  }
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 

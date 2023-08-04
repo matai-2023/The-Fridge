@@ -2,14 +2,14 @@
 {{!-- Homepage is a grid of cells, each with the
 ability to stick a note in it --}}
 
-<div class="grid">
-  {{#each rows}}
-    <div class="row">
-      {{#each this}}
-        <div class="cell">
-          <p>{{note}}</p>
-        </div>
-      {{/each}}
-    </div>
-  {{/each}}
+
+<div id="grid">
+
+{{>row1}}
+{{>row2}}
+{{>row3}}
+
 </div>
+
+  
+

@@ -2,8 +2,7 @@ import server from './server.js'
 import * as Path from 'node:path'
 import * as URL from 'node:url'
 import * as fsPromises from 'node:fs/promises'
-import express from 'express'
-import hbs from 'express-handlebars'
+import { log } from 'node:console'
 
 const port = 3000
 
@@ -18,25 +17,35 @@ server.listen(port, function () {
 
 //compiling fridge data into table rows
 
-export function organiseDataRows(data) {
-  const fridgeData = fsPromises.readFile(filePath, 'utf-8')
-  console.log(fridgeData)
+async function organiseDataRows() {
+  const fridgeData = await fsPromises.readFile(filePath, 'utf-8')
+
   const notes = JSON.parse(fridgeData)
-  const viewData = notes.fridgeData
-  console.log(viewData)
 
-  const rows = []
-  const numRows = Math.ceil(viewData.length / 3)
+  const viewData = notes
 
-  for (let i = 0; i < numRows; i++) {
-    const startOfRow = i * 3
-    const endOfRow = startOfRow + 3
+  let notesArray = viewData.FridgeData
 
-    const rowData = viewData.slice(startOfRow, endOfRow)
-    rows.push(rowData)
-  }
-  console.log(rows)
-  return rows
+
+  const row1 = []
+  const row2 = []
+  const row3 = []
+
+
+  notesArray.map((object) => {
+    if (object['id'] === 1 || object['id'] === 2 || object['id'] === 3) {
+      row1.push(object)
+    } else if (object['id'] === 4 || object['id'] === 5 || object['id'] === 6) {
+      row2.push(object)
+    } else if (object['id'] === 7 || object['id'] === 8 || object['id'] === 9) {
+      row3.push(object)
+    }
+  })
+
+  console.log(row1)
+  console.log(row2)
+  console.log(row3)
 }
 
-// console.log(organiseDataRows(filePath))
+organiseDataRows()
+
