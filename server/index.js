@@ -25,10 +25,10 @@ export async function organiseDataRows(filePath) {
   const viewData = notes
   await console.log(viewData)
 
-  const eachNote = viewData.data.map((note) => {
-    console.log(note)
-  })
-  console.log(eachNote)
+  // const eachNote = viewData.data.map((note) => {
+  //   console.log(note)
+  // })
+  // console.log(eachNote)
 
   const rows = []
 

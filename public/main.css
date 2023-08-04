@@ -1,18 +1,52 @@
 /* Add in global graphic identity i.e. font family, text styles */
 
+h1 {
+  font-family: 'Orbitron', sans-serif;
+  color:#575656;
+  letter-spacing: 10px;
+}
 
 /* Style the kitchen background */
 body {
-  background-color: #FFCCCC;
+  background-color: #a49898;
   font-family: 'Spirax', cursive;
+}
+
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Style the fridge itself */
 #fridge {
+  border: rgb(221, 210, 196) solid 5px;
+  margin-top: 20px;
+  padding-top: 20px;
+  background-color: antiquewhite;
+  width: 600px;
+  height: 450px;
+  display: block;
+  
+}
+
+.title-container {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
 }
+
+.lower-half {
+  border: rgb(221, 210, 196) solid 5px;
+  background-color: antiquewhite;
+  width: 600px;
+  height: 900px;
+  display: block;
+}
+
+/* .divider {
+  border-top: rgb(221, 210, 196) solid 5px;
+} */
 
 /* Style the grid each cell belongs in on fridge */
 #grid {
