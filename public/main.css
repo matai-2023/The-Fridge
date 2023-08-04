@@ -72,7 +72,7 @@ body {
 
 /* Style the grid you can add notes to on the fridge */
 .cell {
-  border: solid 2px black;
+  border: solid 2px antiquewhite;
   width:150px;
  
 }
@@ -86,15 +86,19 @@ body {
 
 /* Style each kitchen magnet  */
 .magnet {
-  width: 20px; 
+  width: 100px; 
   height: auto;
 }
 
 
 /* Style the selecting and clicking of the magnets displayed at side of screen  */
-.magnet-library {
+.magnet-menu {
+  padding-right: 20%;
   display: flex;
   flex-direction: column;
+  position: relative;
+  width: 400px;
+  height: auto;
 }
 
 /* Style the form you add note's text content into  */

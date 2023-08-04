@@ -3,17 +3,23 @@
     {
       "id": 1,
       "name": "Caleb",
-      "note": "Lorem ipsum dolor sita amet, consectetur adipiscing elit, sed do eiusmod tempor "
+      "note": "Lorem ipsum dolor sita amet, consectetur adipiscing elit, sed do eiusmod tempor ", 
+      "image": "/images/caleb.png"
     },
     {
       "id": 2,
       "name": "Laura",
-      "note": "Lorem ipsum dolor sit bamet, consectetur adipiscing elit, sed do eiusmod tempor"
+      "note": "Lorem ipsum dolor sit bamet, consectetur adipiscing elit, sed do eiusmod tempor",
+      "image": "/images/laura.png"
+
     },
     {
       "id": 3,
       "name": "Hannah",
-      "note": "Lorem ipsum dolor sit camet, consectetur adipiscing elit, sed do eiusmod tempor"
+      "note": "Lorem ipsum dolor sit camet, consectetur adipiscing elit, sed do eiusmod tempor",
+      "image": "/images/hannah.png"
+
+    
     }
   ]
 }
