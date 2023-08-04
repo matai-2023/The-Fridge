@@ -13,37 +13,30 @@ const filePath = Path.join(__dirname, 'data', 'data.json')
 
 server.listen(port, function () {
   // eslint-disable-next-line no-console
-  //console.log('Server is listening on port', port)
+  console.log('Server is listening on port', port)
 })
 
 //compiling fridge data into table rows
 
-export async function organiseDataRows(filePath) {
-  const fridgeData = await fsPromises.readFile(filePath, 'utf-8')
+export function organiseDataRows(data) {
+  const fridgeData = fsPromises.readFile(filePath, 'utf-8')
   console.log(fridgeData)
   const notes = JSON.parse(fridgeData)
-  const viewData = notes
-  await console.log(viewData)
-
-  const eachNote = viewData.data.map((note) => {
-    console.log(note)
-  })
-  console.log(eachNote)
+  const viewData = notes.fridgeData
+  console.log(viewData)
 
   const rows = []
-
   const numRows = Math.ceil(viewData.length / 3)
-  // console.log(numRows)
 
   for (let i = 0; i < numRows; i++) {
     const startOfRow = i * 3
     const endOfRow = startOfRow + 3
 
     const rowData = viewData.slice(startOfRow, endOfRow)
-
     rows.push(rowData)
   }
-  // console.log(rows)
+  console.log(rows)
+  return rows
 }
 
-console.log(organiseDataRows(filePath))
+// console.log(organiseDataRows(filePath))
