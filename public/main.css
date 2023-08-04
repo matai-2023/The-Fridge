@@ -6,10 +6,14 @@ h1 {
   letter-spacing: 10px;
 }
 
+p {
+  font-family: 'Edu SA Beginner', cursive; 
+  color: black;
+}
+
 /* Style the kitchen background */
 body {
   background-color: #a49898;
-  font-family: 'Spirax', cursive;
 }
 
 
@@ -68,16 +72,15 @@ body {
 
 /* Style the note appearance/layout */
 .note-layout {
-  display: flex;
-  flex-direction: column;
+  display: block;
+  background-color: cyan;
+  border: rgb(1, 153, 153) solid 2px;
 }
 
 /* Style each kitchen magnet  */
 .magnet {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 50px;
+  width: 20px; 
+  height: auto;
 }
 
 
@@ -85,14 +88,11 @@ body {
 .magnet-library {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin: 50px;
 }
 
 /* Style the form you add note's text content into  */
 .form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: 'Roboto', sans-serif;
+  display: block;
+  background-color: cyan;
+  border: rgb(1, 153, 153) solid 2px;
 }
