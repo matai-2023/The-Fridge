@@ -33,16 +33,6 @@ server.get('/', async (req, res) => {
     
     })
     
-
-//get the individual note from the root page OR setup for the popup
-server.get('/', async (req, res) => {
-    const filePath = Path.join(__dirname,  'data', 'data.json')
-    const data = await fsPromises.readFile(filePath, 'utf-8')
-    const notes = JSON.parse(data)
-    const viewData = notes
-    res.render('home', viewData)
-    })
-
  //For the GET /fridge/:id/edit route: EDITING THE NOTE
  server.get('/fridge/:id/edit', async(req, res) => {
     const id = req.params.id
@@ -66,22 +56,22 @@ server.post('/fridge/:id/edit', async(req, res) => {
   }}
 )
 
-//adding = add new object at the end of the JSON file
+// //adding = add new object at the end of the JSON file
 
-server.post('/fridge/:id/edit', async(req, res) => {
-  const id = req.params.id
-  const filePath = Path.join(__dirname,  'data', 'data.json')
-  const data = await fsPromises.readFile(filePath, 'utf-8')
-  const notes = JSON.stringify(data)
-  const note = notes.fridgeData.find((obj) => obj.id == id) 
-  const body = req.body
+// server.post('/fridge/:id/edit', async(req, res) => {
+//   const id = req.params.id
+//   const filePath = Path.join(__dirname,  'data', 'data.json')
+//   const data = await fsPromises.readFile(filePath, 'utf-8')
+//   const notes = JSON.stringify(data)
+//   const note = notes.fridgeData.find((obj) => obj.id == id) 
+//   const body = req.body
    
-  Object.keys(data).map(
-    function(id){
-      data[id]["name"]=[body]
-      data[id]["note"]=[body]
-  })
- })
+//   Object.keys(data).map(
+//     function(id){
+//       data[id]["name"]=[body]
+//       data[id]["note"]=[body]
+//   })
+//  })
 
 
 
@@ -100,11 +90,23 @@ server.post('/fridge/:id/edit', async(req, res) => {
   
   for (let [i, note] of note.entries()) {
     if (id === id) {
-      notes.splice(i, [i])
+      notes.splice(i, [note])
     }
   }
   
  })
+
+
+// onclick function to redirect to the main page from the editing page
+server.get('/fridge/:id/edit'), async (req, res) => {
+  const id = res.params.id
+  const filePath = Path.join(__dirname,  'data', 'data.json')
+  const data = await fsPromises.readFile(filePath, 'utf-8')
+
+  let object = document.getElementByType()
+object.onclick = function click() {
+  return res.redirect('/fridge/:id/edit')
+}}
 
 
 
@@ -114,9 +116,9 @@ server.post('/fridge/:id/edit', async(req, res) => {
 
   // const stringified = JSON.stringify(notes, null, 2)
 
-//   await fsPromises.writeFile(filePath, stringified, { encoding: 'utf-8' })
+  // await fsPromises.writeFile(filePath, stringified, { encoding: 'utf-8' })
 
-//   res.redirect(`/fridgeData/${id}`)
+  // res.redirect(`/fridgeData/${id}`)
 
 
 
